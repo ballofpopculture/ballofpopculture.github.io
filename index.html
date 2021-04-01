@@ -20,6 +20,44 @@
                 })
                 //$("#schedule").html(result);
             }});
+            
+            $("#semester").change(function(){
+                console.log($(this).val());
+                table = document.getElementById("schedule");
+                rows = table.getElementsByTagName("tr");
+                console.log(rows);
+                filter = $(this).val();
+                
+                for (let row of rows) { // `for...of` loops through the NodeList
+                    console.log("HERE");
+                    cells = row.getElementsByTagName("td");
+                    console.log(cells[2]);
+                    semester = cells[2] || null; // gets the 2nd `td` or nothing
+                    // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
+                    if (filter === "all" || !semester || (filter === semester.textContent)) {
+                      row.style.display = ""; // shows this row
+                    }
+                    else {
+                      row.style.display = "none"; // hides this row
+                    }
+                }
+            })
+            
+            $(document).on('click', '.add', function(){
+                console.log($(this).data('id'));
+                course = $(this).closest('tr').find('td').eq(0).html()
+                $('#' + $(this).data('sem')).append("<tr><td>" + course + "</td><td data-id=\"" + $(this).data('id') + "\" class=\"remove\"><span class=\"oi oi-x\" title=\"x\" aria-hidden=\"true\"></td></tr>")
+                $(this).closest('tr').hide();
+                
+                //console.log($(this).closest('tr').find('td').eq(0).html());  
+            })
+            
+            $(document).on('click', '.remove', function(){
+                console.log($(this).data('id'));
+                $('[data-rowid="'+ $(this).data('id') +'"]').show();
+                $(this).closest('tr').remove()
+            })
+            
         </script>
     </head>
  <body>
