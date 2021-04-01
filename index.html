@@ -111,13 +111,16 @@
                         
                         if(exp > 6)
                         {
+                            console.log("greater than 6");
+                            console.log(exp);
                             extra = exp - 6;
                             exp = 6;
                             other += extra;
                         }
+                        
                         $("#exc").html(exp);
                         $("#addc").html(extra);
-                        $("semc").html(semC);
+                        $("#semc").html(semC);
                     }
                 })
             }
