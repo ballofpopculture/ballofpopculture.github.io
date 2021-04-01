@@ -16,7 +16,7 @@
         <script>
             $.ajax({url: "classes.json", dataType: 'json', success: function(result){
                 result['posts'].forEach(function(el){
-                    $("#schedule").append('<tr><td data-rowid="' + el['id'] +'"><td>' + el['courseName'] + '</td><td>' + el['coursePre'] + ' ' + el['courseNum'] + '</td><td> ' + el['semester'] +'</td><td>' + el['type'] + '</td><td>' + el['credits'] + '</td><td class="add" data-sem="' + el['sem'] + '" data-id="' + el['id'] + '"><span class="oi oi-plus" title="plus" aria-hidden="true"></span></td></tr></tr>');
+                    $("#schedule").append('<tr><td data-rowid="' + el['id'] +'">' + el['courseName'] + '</td><td>' + el['coursePre'] + ' ' + el['courseNum'] + '</td><td> ' + el['semester'] +'</td><td>' + el['type'] + '</td><td>' + el['credits'] + '</td><td class="add" data-sem="' + el['sem'] + '" data-id="' + el['id'] + '"><span class="oi oi-plus" title="plus" aria-hidden="true"></span></td></tr></tr>');
                 })
                 //$("#schedule").html(result);
             }});
