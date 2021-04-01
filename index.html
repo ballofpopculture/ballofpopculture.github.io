@@ -83,7 +83,8 @@
                     for (let row of rows)
                     {
                         row = row.closest('tr');
-                        console.log(row.closest('tr'));
+                        console.log(row.closest('tr').data('credits'));
+                        console.log(row.closest('tr').data('cnum'));
                         console.log(row);
                         
                         if(count == 0)
