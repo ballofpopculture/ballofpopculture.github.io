@@ -82,7 +82,7 @@
                     count = 0;
                     for (let row of rows)
                     {
-                        row = row.closest('tr');
+                        //row = row.closest('tr');
                         console.log(row.dataset.credits);
                         console.log(row.cnum);
                         console.log(row);
@@ -93,18 +93,18 @@
                             continue;
                         }
                         console.log(row);
-                        totalCredits += row.data('credits');
-                        if(row.data('cnum').includes('EXPIN') || row.data('cnum').includes('EXPCL'))
+                        totalCredits += row.dataset.credits;
+                        if(row.dataset.cnum.includes('EXPIN') || row.dataset.cnum.includes('EXPCL'))
                         {
-                            exp += row.data('credits');
+                            exp += row.dataset.credits;
                         }
-                        if(row.data('cnum').includes('EXPSK'))
+                        if(row.dataset.cnum.includes('EXPSK'))
                         {
-                            other += row.data('credits');
+                            other += row.dataset.credits;
                         }
-                        if(row.data('cnum').includes('SEMNR'))
+                        if(row.dataset.cnum.includes('SEMNR'))
                         {
-                            semC += row.data('credits');
+                            semC += row.dataset.credits;
                         }
                         $('#tc').html(totalCredits);
                         if(exp > 6)
