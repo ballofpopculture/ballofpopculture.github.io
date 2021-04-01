@@ -77,6 +77,7 @@
                     let exp = 0;
                     let other = 0;
                     let semC = 0;
+                    let extra = 0;
                     let table = document.getElementById(sem);
                     let rows = table.getElementsByTagName("tr");
                     count = 0;
@@ -96,17 +97,18 @@
                         totalCredits += row.dataset.credits;
                         if(row.dataset.cnum.includes('EXPIN') || row.dataset.cnum.includes('EXPCL'))
                         {
-                            exp += row.dataset.credits;
+                            exp += parseInt(row.dataset.credits);
                         }
                         if(row.dataset.cnum.includes('EXPSK'))
                         {
-                            other += row.dataset.credits;
+                            other += parseInt(row.dataset.credits);
                         }
                         if(row.dataset.cnum.includes('SEMNR'))
                         {
-                            semC += row.dataset.credits;
+                            semC += parseInt(row.dataset.credits);
                         }
                         $('#tc').html(totalCredits);
+                        
                         if(exp > 6)
                         {
                             extra = exp - 6;
