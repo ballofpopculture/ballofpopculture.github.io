@@ -33,11 +33,7 @@
                 
                 count = 0
                 for (let row of rows) { // `for...of` loops through the NodeList
-                    if(count == 0)
-                    {
-                        count += 1;
-                        continue;
-                    }
+ 
                     console.log("HERE");
                     cells = row.getElementsByTagName("td");
                     console.log(cells[2]);
@@ -83,8 +79,14 @@
                     let semC = 0;
                     let table = document.getElementById(sem);
                     let rows = table.getElementsByTagName("tr");
+                    count = 0;
                     for (let row of rows)
                     {
+                        if(count == 0)
+                        {
+                            count += 1;
+                            continue;
+                        }
                         console.log(row);
                         totalCredits += row.data('credits');
                         if(row.data('cnum').includes('EXPIN') || row.data('cnum').includes('EXPCL'))
