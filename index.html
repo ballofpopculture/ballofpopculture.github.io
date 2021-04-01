@@ -94,7 +94,7 @@
                             continue;
                         }
                         console.log(row);
-                        totalCredits += row.dataset.credits;
+                        totalCredits += parseInt(row.dataset.credits);
                         if(row.dataset.cnum.includes('EXPIN') || row.dataset.cnum.includes('EXPCL'))
                         {
                             exp += parseInt(row.dataset.credits);
