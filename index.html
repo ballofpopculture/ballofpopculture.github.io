@@ -59,7 +59,8 @@
             $(document).on('click', '.remove', function(){
                 console.log("In Remove");
                 console.log($(this).data('id'));
-                $('[data-rowid="'+ $(this).data('id') +'"]').show();
+                id = $(this).data('id')
+                $('[data-rowid="' + id + '"]').show();
                 $(this).closest('tr').remove()
             })
         });
