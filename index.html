@@ -31,7 +31,13 @@
                 console.log(rows);
                 filter = $(this).val();
                 
+                count = 0
                 for (let row of rows) { // `for...of` loops through the NodeList
+                    if(count == 0)
+                    {
+                        count += 1;
+                        continue;
+                    }
                     console.log("HERE");
                     cells = row.getElementsByTagName("td");
                     console.log(cells[2]);
