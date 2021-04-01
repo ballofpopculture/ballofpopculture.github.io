@@ -15,14 +15,56 @@
         <!--<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">-->
         <script>
             $.ajax({url: "classes.json", dataType: 'json', success: function(result){
-                result['posts'].forEach(function(element){
-                    $("#classes").append("<tr><td>" + element['courseName'] + "</td><td>" + element['credits'] + "</td></tr>");
+                result['posts'].forEach(function(el){
+                    $("#schedule").append('<tr><td data-rowid="' + el['id'] +'"><td>' + el['courseName'] + '</td><td>' + el['coursePre'] + ' ' + el['courseNum'] + '</td><td> ' + el['semester'] +'</td><td>' + el['type'] + '</td><td>' + e['credits'] + '</td><td class="add" data-sem="' + el['sem'] + '" data-id="' + el['id'] + '"><span class="oi oi-plus" title="plus" aria-hidden="true"></span></td></tr></tr>');
                 })
                 //$("#schedule").html(result);
             }});
         </script>
     </head>
-<h1>HELLO WORLD</h1>
-<table id="classes">
-</table>
+ <body>
+    <h1>Hello, world!</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+            <table id="fa21">
+                <th>Fall 2021</th>
+            </table>
+            <table id="fa22">
+                <th>Fall 2022</th>
+            </table>
+            </div>
+            <div class="col-md">
+            <table id="sp22">
+                <th>Spring 2022</th>
+            </table>
+            <table id="sp23">
+                <th>Spring 2023</th>
+            </table>
+            </div>
+            <div class="col-sm">
+                <table id="stats">
+                    <tr><td>Total Credits</td><td>0</td></tr>
+                    <tr><td>EPSIK Credits</td><td>0</td></tr>
+                    <tr><td>Addition EPSIK Credits</td><td>0</td>
+                    <tr><td>Seminar Credits</td><td>0</td></tr>
+                </table>
+            </div>
+        </div>
+        
+        <select id="semester">
+        <option value="all">All Semesters</option>
+        <option value="FALL 2021">Fall 2021</option>
+        <option value="SPRING 2022">Spring 2022</option>
+        <option value="FALL 2022">Fall 2022</option>
+        <option value="SPRING 2023">Spring 2023</option>
+    </select>
+    <div class="row">
+        <table class="table" id="schedule">
+        </table>
+    </div>
+    </div>
+    
+  </body>
+
 </html>
