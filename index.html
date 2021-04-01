@@ -79,6 +79,7 @@
                     let rows = table.getElementsByTagName("tr");
                     for (let row of rows)
                     {
+                        console.log(row);
                         totalCredits += row.data('credits');
                         if(row.data('cnum').includes('EXPIN') || row.data('cnum').includes('EXPCL'))
                         {
