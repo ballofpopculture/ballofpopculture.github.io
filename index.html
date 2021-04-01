@@ -50,8 +50,11 @@
                 console.log("In Add");
                 console.log($(this).data('id'));
                 course = $(this).closest('tr').find('td').eq(0).html()
-                $('#' + $(this).data('sem')).append("<tr><td>" + course + "</td><td data-id=\"" + $(this).data('id') + "\" class=\"remove\"><span class=\"oi oi-x\" title=\"x\" aria-hidden=\"true\"></td></tr>")
+                credits = $(this).closest('tr').find('td').eq(4).html()
+                cnum = $(this).closest('tr').find('td').eq(1).html()
+                $('#' + $(this).data('sem')).append("<tr data-credits=\"" + credits + "\" data-cnum=\"" + cnum + "\" ><td>" + course + "</td><td>"+ credits +"</td><td data-id=\"" + $(this).data('id') + "\" class=\"remove\"><span class=\"oi oi-x\" title=\"x\" aria-hidden=\"true\"></td></tr>")
                 $(this).closest('tr').hide();
+                getCount();
                 
                 //console.log($(this).closest('tr').find('td').eq(0).html());  
             })
@@ -62,7 +65,46 @@
                 id = $(this).data('id')
                 $('[data-rowid="' + id + '"]').show();
                 $(this).closest('tr').remove()
+                getCount();
             })
+            
+            function getCount(){
+                semArr = ['fa21', 'sp22', 'fa22', 'sp23'];
+                semArr.forEach(function(sem){
+                    let totalCredits = 31;
+                    let exp = 0;
+                    let other = 0;
+                    let semC = 0;
+                    let table = document.getElementById(sem);
+                    let rows = table.getElementsByTagName("tr");
+                    for (let row of rows)
+                    {
+                        totalCredits += row.data('credits');
+                        if(row.data('cnum').includes('EXPIN') || row.data('cnum').includes('EXPCL'))
+                        {
+                            exp += row.data('credits');
+                        }
+                        if(row.data('cnum').includes('EXPSK'))
+                        {
+                            other += row.data('credits');
+                        }
+                        if(row.data('cnum').includes('SEMNR'))
+                        {
+                            semC += row.data('credits');
+                        }
+                        $('#tc').html(totalCredits);
+                        if(exp > 6)
+                        {
+                            extra = exp - 6;
+                            exp = 6;
+                            other += extra;
+                        }
+                        $("#exc").html(exp);
+                        $("#addc").html(extra);
+                        $("semc").html(semC);
+                    }
+                })
+            }
         });
         </script>
     </head>
@@ -82,10 +124,10 @@
             </div>
             <div class="col-sm">
                 <table id="stats">
-                    <tr><td>Total Credits</td><td>0</td></tr>
-                    <tr><td>EPSIK Credits</td><td>0</td></tr>
-                    <tr><td>Addition EPSIK Credits</td><td>0</td>
-                    <tr><td>Seminar Credits</td><td>0</td></tr>
+                    <tr><td>Total Credits</td><td id="tc">0</td></tr>
+                    <tr><td>EPSIK Credits</td><td id="exc">0</td></tr>
+                    <tr><td>Addition EPSIK Credits</td><td id="addc">0</td>
+                    <tr><td>Seminar Credits</td><td id="semc">0</td></tr>
                 </table>
             </div>
         </div>
@@ -113,8 +155,9 @@
                 <option value="SPRING 2023">Spring 2023</option>
             </select>
         </div>
-        <div class="row">
-            <table class="table" id="schedule" style="overflow: auto;">
+        <div class="row" style="overflow: auto;">
+            <table class="table" id="schedule">
+                <tr><th>Course Name</th><th>Course Number</th><th>Semester</th><th>Type</th><th>Credits</th><th></th></tr>
             </table>
         </div>
 
