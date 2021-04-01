@@ -84,16 +84,16 @@
                     for (let row of rows)
                     {
                         //row = row.closest('tr');
-                        console.log(row.dataset.credits);
-                        console.log(row.cnum);
-                        console.log(row);
+                        //console.log(row.dataset.credits);
+                        //console.log(row.cnum);
+                        //console.log(row);
                         
                         if(count == 0)
                         {
                             count += 1;
                             continue;
                         }
-                        console.log(row);
+                        //console.log(row);
                         totalCredits += parseInt(row.dataset.credits);
                         if(row.dataset.cnum.includes('EXPIN') || row.dataset.cnum.includes('EXPCL'))
                         {
