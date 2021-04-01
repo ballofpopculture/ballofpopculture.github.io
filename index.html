@@ -44,6 +44,7 @@
             })
             
             $(document).on('click', '.add', function(){
+                console.log("In Add");
                 console.log($(this).data('id'));
                 course = $(this).closest('tr').find('td').eq(0).html()
                 $('#' + $(this).data('sem')).append("<tr><td>" + course + "</td><td data-id=\"" + $(this).data('id') + "\" class=\"remove\"><span class=\"oi oi-x\" title=\"x\" aria-hidden=\"true\"></td></tr>")
@@ -53,6 +54,7 @@
             })
             
             $(document).on('click', '.remove', function(){
+                console.log("In Remove");
                 console.log($(this).data('id'));
                 $('[data-rowid="'+ $(this).data('id') +'"]').show();
                 $(this).closest('tr').remove()
@@ -61,7 +63,7 @@
         </script>
     </head>
  <body>
-    <h1>Hello, world!</h1>
+    <h1>Schedule</h1>
     <div class="container">
         <div class="row mb-1">
             <div class="col-md">
