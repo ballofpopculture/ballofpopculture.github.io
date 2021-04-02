@@ -66,8 +66,8 @@
                 console.log($(this).data('id'));
                 id = $(this).data('id')
                 $('[data-rowid="' + id + '"]').show();
-                let promise = $(this).closest('tr').remove();
-                promise.then(getCount);                
+                let prom = new Promise((resolve, reject) => { $(this).closest('tr').remove(); })
+                prom.then(getCount);                
                 //getCount();
             })
             
