@@ -67,11 +67,15 @@
                 id = $(this).data('id')
                 $('[data-rowid="' + id + '"]').show();
                 let prom = new Promise((resolve, reject) => { $(this).closest('tr').remove(); })
-                prom.then(getCount);                
+                prom.then(function(){
+                    console.log("In promise (assumed that removal has finished?)");
+                    getCount()
+                });                
                 //getCount();
             })
             
             function getCount(){
+                console.log("In get count");
                 semArr = ['fa21', 'sp22', 'fa22', 'sp23'];
                 semArr.forEach(function(sem){
                     let totalCredits = 31;
@@ -80,7 +84,9 @@
                     let semC = 0;
                     let extra = 0;
                     let table = document.getElementById(sem);
+                    console.log(table);
                     let rows = table.getElementsByTagName("tr");
+                    console.log(rows);
                     count = 0;
                     for (let row of rows)
                     {
