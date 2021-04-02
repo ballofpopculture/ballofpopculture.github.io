@@ -80,6 +80,10 @@
             function getCount(){
                 console.log("In get count");
                 semArr = ['fa21', 'sp22', 'fa22', 'sp23'];
+                $('#tc').html(31);
+                $("#exc").html(0);
+                $("#addc").html(0);
+                $("#semc").html(0);
                 semArr.forEach(function(sem){
                     let totalCredits = 31;
                     let exp = 0;
@@ -87,14 +91,9 @@
                     let semC = 0;
                     let extra = 0;
                     let table = document.getElementById(sem);
-                    console.log(table);
                     let rows = table.getElementsByTagName("tr");
-                    console.log(rows);
+                    
                     count = 0;
-                    $('#tc').html(0);
-                    $("#exc").html(0);
-                    $("#addc").html(0);
-                    $("#semc").html(0);
                     for (let row of rows)
                     {
                         
