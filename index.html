@@ -66,12 +66,13 @@
                 console.log($(this).data('id'));
                 id = $(this).data('id')
                 $('[data-rowid="' + id + '"]').show();
-                let prom = new Promise((resolve, reject) => { $(this).closest('tr').remove(); })
+                /*let prom = new Promise((resolve, reject) => { $(this).closest('tr').remove(); })
                 prom.then(function(){
                     console.log("In promise (assumed that removal has finished?)");
                     getCount()
-                });                
-                //getCount();
+                });*/
+                console.log("Sending getCount()");      
+                getCount();
             })
             
             function getCount(){
