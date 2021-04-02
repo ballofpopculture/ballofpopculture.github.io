@@ -85,6 +85,10 @@
                 let other = 0;
                 let semC = 0;
                 let extra = 0;
+                $('#tc').removeClass('red green');
+                $("#exc").removeClass('red green');
+                $("#addc").removeClass('red green');
+                $("#semc").removeClass('red green');
                 semArr.forEach(function(sem){
 
                     let table = document.getElementById(sem);
@@ -121,16 +125,29 @@
                     exp = 6;
                 }
             
-                $('#tc').html(totalCredits);
-                $("#exc").html(exp);
+                colorClass = (totalCredits >= 88) ? 'green' : 'red';
+                $('#tc').html(totalCredits).addClass(colorClass);
+                
+                colorClass = (exp >= 6) ? 'green' : 'red';
+                $('#exc').html(exp).addClass(colorClass);
+                
+                colorClass = (other >= 6) ? 'green' : 'red';
+                $('#addc').html(other).addClass(colorClass);
+                
+                colorClass = (semC >= 1) ? 'green' : 'red';
+                $('#semc').html(semC).addClass(colorClass);
+
+                /*$("#exc").html(exp);
                 $("#addc").html(other);
-                $("#semc").html(semC);
+                $("#semc").html(semC);*/
             }
         });
         </script>
         <style>
             .tableFixHead { overflow-y: auto; height: 100px; }
             .tableFixHead thead th { position: sticky; top: 0; background-color: #FFF;
+            .red{ color: red;}
+            .green{ color: green; }
 }
             
         </style>
